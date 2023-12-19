@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 
 function App() {
   /* This count can be number or null
@@ -21,12 +20,12 @@ function App() {
   }
 
   return (
-    <>
+    <div>
       <h1>{count}</h1>
       <button onClick={handleCount}>Increment</button>
       <button onClick={handleReset}>Reset</button>
       <p onClick={handleSampleState}>{sampleState}</p>
-    </>
+    </div>
   )
 }
 
