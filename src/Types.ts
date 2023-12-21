@@ -298,6 +298,7 @@ interface ICategory {
 
 // Imagine our post has multiple users and multiple categories
 // And We wannt fetch that post using its users
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface IPost {
     id: number;
     title: string;
