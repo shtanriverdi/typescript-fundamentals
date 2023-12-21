@@ -200,7 +200,9 @@ type UserType = {
 }
 
 const betterFunction = (user: UserType) => {
-    console.log(user)
+    console.log(user.age)
+    console.log(user.username)
+    console.log(user?.phone)
 }
 
 const user2: UserType = {
@@ -209,3 +211,16 @@ const user2: UserType = {
     phone: "+90 542 154 87 93"
 };
 betterFunction(user2);
+
+
+
+// Creating A Prototype of a Function
+// Using that prototype, we can create different Functions
+type myFuncPrototype = (a: number, b: string) => void
+
+// We used the function prototype to create a new function
+const write: myFuncPrototype = (num, str) => {
+    console.log(num + " times " + str);
+}
+
+write(1, "A");
