@@ -283,3 +283,93 @@ console.log(user3);
 // Using Interfaces & Types depends on your project
 // Don't be confused, if you need to extend any type
 // just use Interfaces, else use Types
+
+
+// GENERICS
+interface IAuthor {
+    id: number;
+    username: string;
+}
+
+interface ICategory {
+    id: number;
+    title: string;
+}
+
+// Imagine our post has multiple users and multiple categories
+// And We wannt fetch that post using its users
+interface IPost {
+    id: number;
+    title: string;
+    desc: string;
+    // We can create a new interface and add it here!
+    extra: IAuthor[] | ICategory[];
+}
+
+interface IPostBetter<T> {
+    id: number;
+    title: string;
+    desc: string;
+    // I will use here whatever I pass, it can be anything
+    extra: T[];
+}
+
+const testMe: IPostBetter<string> = {
+    id: 1,
+    title: "Post Title",
+    desc: "Description",
+    extra: ["str", "str2"]
+}
+console.log(testMe);
+
+// #########################################################
+
+// You cannot give any string, number or boolean this time
+interface IPostEvenBetter<T extends object> {
+    id: number;
+    title: string;
+    desc: string;
+    // This has to be object array!
+    extra: T[];
+}
+
+type testType = {
+    id: number;
+    username: string;
+}
+
+const testMe2: IPostEvenBetter<testType | IAuthor> = {
+    id: 1,
+    title: "Post Title",
+    desc: "Description",
+    extra: [
+        {
+            id: 1,
+            username: "Melo"
+        },
+        {
+            id: 2,
+            username: "Genesis"
+        }
+    ]
+}
+console.log(testMe2);
+
+// #########################################################
+
+const testMe3: IPostEvenBetter<IAuthor> = {
+    id: 1,
+    title: "Post Title",
+    desc: "Description",
+    extra: [
+        {
+            id: 1,
+            username: "Melo"
+        },
+        {
+            id: 2,
+            username: "Genesis"
+        }
+    ]
+}
+console.log(testMe3);
