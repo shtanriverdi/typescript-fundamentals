@@ -118,3 +118,94 @@ console.log(
     isTrue,
     userObjOptional
 );
+
+
+
+// FUNCTIONS
+
+const sayHi = () => {
+    console.log("Hi, ");
+}
+sayHi();
+
+
+// Functions return a string
+const funcReturnString = (): string => {
+    console.log("Hi, ");
+    return "Genesis Codemy!";
+}
+
+const word: string = funcReturnString();
+console.log(word);
+
+
+
+// Passing Arguments in to Functions
+// These two are exatly the same
+const multiple = (num: number) => {
+    return num * 2;
+}
+const multiple2 = (num: number): number => {
+    return num * 2;
+}
+const multiple3 = (num: number): void => {
+    // Do something but don't return anything
+    num + 1;
+}
+
+multiple(2);
+multiple2(3);
+multiple3(3);
+
+
+
+// Optional Parameters for a Function
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const sum = (num1: number, num2: number, another?: number) => {
+    return num1 + num2 + (another || 0);
+}
+
+// Default value
+const sum2 = (num1: number, num2: number, another: number = 0) => {
+    return num1 + num2 + another;
+}
+
+sum(1, 2);
+sum(1, 2, 123);
+
+sum2(1, 2);
+sum2(1, 2, 5);
+
+
+
+
+
+// TYPE ALIASES
+
+// This is okay but too long! So we can use type aliases
+const funcTry = (user: { username: string, age: number, phone?: string }) => {
+    console.log(user.username);
+}
+
+funcTry({ username: "string", age: 12 });
+
+
+//-------------------
+
+// We can create our custom type and use it as function parameter
+type UserType = {
+    username: string;
+    age: number;
+    phone?: string;
+}
+
+const betterFunction = (user: UserType) => {
+    console.log(user)
+}
+
+const user2: UserType = {
+    username: "Melo",
+    age: 1453,
+    phone: "+90 542 154 87 93"
+};
+betterFunction(user2);
