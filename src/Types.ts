@@ -224,3 +224,62 @@ const write: myFuncPrototype = (num, str) => {
 }
 
 write(1, "A");
+
+// Another Example
+type UserType2 = {
+    username: string;
+    age: number;
+    phone?: string; // optional
+    theme: "dark" | "light" // Can be only these two values
+}
+
+const userWithTheme: UserType2 = {
+    username: "Meloo",
+    age: 43,
+    theme: "dark"
+    // theme: "pink" // Cannot be possible!
+}
+console.log(userWithTheme);
+
+
+
+// INTERFACES, Advanced version of Types
+
+
+// We don't put "=" here like we do in "type"
+/* Let's say we have two types of users
+    -> Customers
+    -> Employees
+    We can use our same interface to these two types
+*/
+interface IUser {
+    username: string;
+    email: string;
+    age: number;
+}
+
+// This has everything that IUser has but also adds "customerId" additionally
+// We can add whatever we want to extend IUser interface
+interface ICustomer extends IUser {
+    customerId: number;
+}
+
+const customer: ICustomer = {
+    username: "Corç",
+    age: 45,
+    email: "corc@gmail.com",
+    customerId: 125123
+}
+console.log(customer);
+
+const user3: IUser = {
+    username: "Corç",
+    age: 45,
+    email: "corc@gmail.com",
+}
+console.log(user3);
+
+
+// Using Interfaces & Types depends on your project
+// Don't be confused, if you need to extend any type
+// just use Interfaces, else use Types
